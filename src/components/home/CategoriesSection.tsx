@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, Building2, Factory, ShieldCheck, Wrench, Settings, ArrowRight } from "lucide-react";
-import { categories } from "@/lib/data";
+import { useCategories } from "@/hooks/use-products";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const iconMap: Record<string, React.ReactNode> = {
   Home: <Home className="h-6 w-6" />,
@@ -13,6 +14,8 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function CategoriesSection() {
+  const { data: categories, isLoading } = useCategories();
+
   return (
     <section className="py-20 bg-background">
       <div className="container">
@@ -25,32 +28,37 @@ export default function CategoriesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
-              <Link
-                to={`/products?category=${cat.id}`}
-                className="group flex items-center gap-4 p-5 rounded-xl border bg-card hover:border-secondary hover:shadow-lg transition-all"
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[...Array(6)].map((_, i) => <Skeleton key={i} className="h-24 rounded-xl" />)}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {categories?.map((cat, i) => (
+              <motion.div
+                key={cat.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
               >
-                <div className="w-14 h-14 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-                  {iconMap[cat.icon]}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-display font-semibold text-foreground">{cat.name}</h3>
-                  <p className="text-sm text-muted-foreground truncate">{cat.description}</p>
-                  <span className="text-xs text-secondary font-medium">{cat.productCount} products</span>
-                </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors shrink-0" />
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                <Link
+                  to={`/products?category=${cat.slug}`}
+                  className="group flex items-center gap-4 p-5 rounded-xl border bg-card hover:border-secondary hover:shadow-lg transition-all"
+                >
+                  <div className="w-14 h-14 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+                    {iconMap[cat.icon || "Settings"]}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display font-semibold text-foreground">{cat.name}</h3>
+                    <p className="text-sm text-muted-foreground truncate">{cat.description}</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors shrink-0" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
