@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingCart, Phone, Search, Flame, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/data";
+import { useCart } from "@/lib/cart-store";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -17,6 +18,7 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { count } = useCart();
 
   return (
     <>
@@ -73,9 +75,11 @@ export default function Header() {
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 bg-secondary text-secondary-foreground text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  0
-                </span>
+                {count > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-secondary text-secondary-foreground text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                    {count}
+                  </span>
+                )}
               </Button>
             </Link>
             <a href={getWhatsAppLink("Hi! I'm interested in GasShop products.")} target="_blank" rel="noopener noreferrer">
