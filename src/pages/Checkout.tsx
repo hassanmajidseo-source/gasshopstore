@@ -11,6 +11,7 @@ import { useCart } from "@/lib/cart-store";
 import { formatPrice, getWhatsAppLink } from "@/lib/data";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/use-auth";
 
 const cities = ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Faisalabad", "Multan", "Peshawar", "Quetta", "Sialkot", "Gujranwala", "Hyderabad", "Bahawalpur", "Sargodha", "Abbottabad", "Mardan"];
 
@@ -22,6 +23,7 @@ export default function Checkout() {
   const { items, total, clearCart } = useCart();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const deliveryFee = total >= 5000 ? 0 : 300;
@@ -66,6 +68,7 @@ export default function Checkout() {
         delivery_fee: deliveryFee,
         total: grandTotal,
         notes: form.notes || null,
+        user_id: user?.id || null,
       });
 
       if (error) throw error;

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingCart, Phone, Search, Flame, ShieldCheck } from "lucide-react";
+import { Menu, X, ShoppingCart, Phone, Search, Flame, ShieldCheck, User, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
+import { useAuth } from "@/hooks/use-auth";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -19,6 +20,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { count } = useCart();
+  const { user, isAdmin } = useAuth();
 
   return (
     <>
@@ -80,6 +82,18 @@ export default function Header() {
                     {count}
                   </span>
                 )}
+              </Button>
+            </Link>
+            {isAdmin && (
+              <Link to="/admin">
+                <Button variant="outline" size="icon" className="hidden sm:flex">
+                  <LayoutDashboard className="h-4 w-4" />
+                </Button>
+              </Link>
+            )}
+            <Link to={user ? "/account" : "/auth"}>
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
               </Button>
             </Link>
             <a href={getWhatsAppLink("Hi! I'm interested in GasShop products.")} target="_blank" rel="noopener noreferrer">
