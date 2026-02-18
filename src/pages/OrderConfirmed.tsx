@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { CheckCircle, Phone } from "lucide-react";
+import { CheckCircle, Phone, CreditCard } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink, WHATSAPP_NUMBER } from "@/lib/data";
@@ -7,6 +7,7 @@ import { getWhatsAppLink, WHATSAPP_NUMBER } from "@/lib/data";
 export default function OrderConfirmed() {
   const [params] = useSearchParams();
   const orderNumber = params.get("order") || "N/A";
+  const paymentMethod = params.get("payment") || "cod";
 
   return (
     <Layout>
@@ -25,19 +26,36 @@ export default function OrderConfirmed() {
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Payment Method</span>
-              <span>Cash on Delivery</span>
+              <span>{paymentMethod === "bank_transfer" ? "Bank Transfer" : "Cash on Delivery"}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Status</span>
-              <span className="text-secondary font-medium">Pending Confirmation</span>
+              <span className="text-secondary font-medium">
+                {paymentMethod === "bank_transfer" ? "Awaiting Payment" : "Pending Confirmation"}
+              </span>
             </div>
           </div>
         </div>
 
+        {paymentMethod === "bank_transfer" && (
+          <div className="bg-muted rounded-xl p-5 mb-6 text-left text-sm">
+            <div className="flex items-center gap-2 font-semibold mb-3">
+              <CreditCard className="h-4 w-4 text-secondary" /> Bank Transfer Details
+            </div>
+            <div className="space-y-1">
+              <p>Bank: <strong>Meezan Bank</strong></p>
+              <p>Account Title: <strong>GasShop Enterprises</strong></p>
+              <p>Account No: <strong>0123-4567890-01</strong></p>
+              <p>IBAN: <strong>PK36MEZN0001234567890001</strong></p>
+            </div>
+            <p className="mt-3 text-muted-foreground">Please send payment screenshot via WhatsApp for confirmation.</p>
+          </div>
+        )}
+
         <div className="space-y-3">
-          <a href={getWhatsAppLink(`Hi! I just placed order ${orderNumber}. Please confirm.`)} target="_blank" rel="noopener noreferrer">
+          <a href={getWhatsAppLink(`Hi! I just placed order ${orderNumber}. ${paymentMethod === "bank_transfer" ? "I will send payment proof shortly." : "Please confirm."}`)} target="_blank" rel="noopener noreferrer">
             <Button variant="outline" className="w-full border-green-500 text-green-600 hover:bg-green-50">
-              Confirm on WhatsApp
+              {paymentMethod === "bank_transfer" ? "Send Payment Proof on WhatsApp" : "Confirm on WhatsApp"}
             </Button>
           </a>
           <a href={`tel:+${WHATSAPP_NUMBER}`}>
