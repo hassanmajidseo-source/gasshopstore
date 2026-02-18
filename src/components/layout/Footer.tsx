@@ -36,7 +36,9 @@ export default function Footer() {
                 { label: "Products", path: "/products" },
                 { label: "Safety Hub", path: "/safety" },
                 { label: "About Us", path: "/about" },
-                { label: "Bulk Orders", path: "/dealer" },
+                { label: "Blog", path: "/blog" },
+                { label: "Contact", path: "/contact" },
+                { label: "FAQ", path: "/faq" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} className="hover:text-secondary transition-colors">{link.label}</Link>
@@ -80,8 +82,9 @@ export default function Footer() {
           <span>© 2026 GasShop.store — All rights reserved.</span>
           <div className="flex gap-4 mt-2 sm:mt-0">
             <Link to="/faq" className="hover:text-secondary">FAQ</Link>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
+            <Link to="/privacy" className="hover:text-secondary">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-secondary">Terms</Link>
+            <Link to="/refund-policy" className="hover:text-secondary">Refund Policy</Link>
           </div>
         </div>
       </div>
