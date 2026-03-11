@@ -1,0 +1,1 @@
+UPDATE products SET image = '/lovable-uploads/03dda6de-fe55-4c88-ae4a-691d02295d27.png' WHERE image = '/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg';
