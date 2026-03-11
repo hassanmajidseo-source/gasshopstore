@@ -128,7 +128,7 @@ export default function Products() {
                     {product.original_price && <span className="text-sm text-muted-foreground line-through">{formatPrice(product.original_price)}</span>}
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/placeholder.svg", slug: product.slug })}>
+                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg", slug: product.slug })}>
                       <ShoppingCart className="h-3 w-3" /> Add to Cart
                     </Button>
                     <a href={getWhatsAppLink(`I want to order: ${product.name} (${formatPrice(product.price)})`)} target="_blank" rel="noopener noreferrer">
