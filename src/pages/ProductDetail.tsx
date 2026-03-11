@@ -66,7 +66,7 @@ export default function ProductDetail() {
         <div className="grid md:grid-cols-2 gap-10">
           {/* Image */}
           <div className="relative aspect-square bg-muted rounded-xl p-8 flex items-center justify-center">
-            <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-contain" />
+            <img src={product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt={product.name} className="w-full h-full object-contain" />
             {product.badge && <Badge className="absolute top-4 left-4 bg-secondary text-secondary-foreground">{product.badge}</Badge>}
           </div>
 
