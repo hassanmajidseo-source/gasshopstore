@@ -51,7 +51,7 @@ export default function ProductDetail() {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image || "/placeholder.svg",
+      image: product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg",
       slug: product.slug,
     });
   };
