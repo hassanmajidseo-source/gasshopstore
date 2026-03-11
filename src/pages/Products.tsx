@@ -112,7 +112,7 @@ export default function Products() {
               >
                 <Link to={`/product/${product.slug}`}>
                   <div className="relative aspect-square bg-muted p-6 flex items-center justify-center">
-                    <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-contain" />
+                    <img src={product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt={product.name} className="w-full h-full object-contain" />
                     {product.badge && <Badge className="absolute top-3 left-3 bg-secondary text-secondary-foreground">{product.badge}</Badge>}
                   </div>
                 </Link>
@@ -128,7 +128,7 @@ export default function Products() {
                     {product.original_price && <span className="text-sm text-muted-foreground line-through">{formatPrice(product.original_price)}</span>}
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/placeholder.svg", slug: product.slug })}>
+                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg", slug: product.slug })}>
                       <ShoppingCart className="h-3 w-3" /> Add to Cart
                     </Button>
                     <a href={getWhatsAppLink(`I want to order: ${product.name} (${formatPrice(product.price)})`)} target="_blank" rel="noopener noreferrer">
@@ -150,7 +150,7 @@ export default function Products() {
                 className="flex gap-4 bg-card rounded-xl border p-4 hover:shadow-md transition-all"
               >
                 <Link to={`/product/${product.slug}`} className="w-24 h-24 bg-muted rounded-lg p-2 shrink-0 flex items-center justify-center">
-                  <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-contain" />
+                  <img src={product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt={product.name} className="w-full h-full object-contain" />
                 </Link>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
@@ -166,7 +166,7 @@ export default function Products() {
                       {product.original_price && <span className="text-sm text-muted-foreground line-through">{formatPrice(product.original_price)}</span>}
                     </div>
                     <div className="flex gap-2">
-                      <Button size="sm" className="gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/placeholder.svg", slug: product.slug })}>
+                      <Button size="sm" className="gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg", slug: product.slug })}>
                         <ShoppingCart className="h-3 w-3" /> Add to Cart
                       </Button>
                       <a href={getWhatsAppLink(`I want to order: ${product.name}`)} target="_blank" rel="noopener noreferrer">

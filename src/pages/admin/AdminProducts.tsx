@@ -115,7 +115,7 @@ export default function AdminProducts() {
               {filtered.map((p) => (
                 <tr key={p.id} className="border-b hover:bg-muted/30">
                   <td className="p-3 flex items-center gap-3">
-                    <img src={p.image || "/placeholder.svg"} alt="" className="w-10 h-10 rounded object-contain bg-muted" />
+                    <img src={p.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt="" className="w-10 h-10 rounded object-contain bg-muted" />
                     <div>
                       <p className="font-medium">{p.name}</p>
                       <p className="text-xs text-muted-foreground">{p.slug}</p>
