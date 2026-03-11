@@ -73,7 +73,7 @@ export default function FeaturedProducts() {
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/placeholder.svg", slug: product.slug })}>
+                    <Button size="sm" className="flex-1 gap-1 text-xs" onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image || "/lovable-uploads/992e304e-cdf7-49d9-b79d-1c9d9f930707.jpg", slug: product.slug })}>
                       <ShoppingCart className="h-3 w-3" /> Add to Cart
                     </Button>
                     <a href={getWhatsAppLink(`I want to order: ${product.name} (${formatPrice(product.price)})`)} target="_blank" rel="noopener noreferrer">
