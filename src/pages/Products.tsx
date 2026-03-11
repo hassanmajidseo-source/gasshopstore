@@ -150,7 +150,7 @@ export default function Products() {
                 className="flex gap-4 bg-card rounded-xl border p-4 hover:shadow-md transition-all"
               >
                 <Link to={`/product/${product.slug}`} className="w-24 h-24 bg-muted rounded-lg p-2 shrink-0 flex items-center justify-center">
-                  <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-contain" />
+                  <img src={product.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt={product.name} className="w-full h-full object-contain" />
                 </Link>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
