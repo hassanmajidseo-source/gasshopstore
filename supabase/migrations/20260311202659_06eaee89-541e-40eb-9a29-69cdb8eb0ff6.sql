@@ -1,0 +1,1 @@
+UPDATE products SET original_price = 15000 WHERE id = 'cc628ba1-14da-4976-a61d-6ca185d54c5e';
