@@ -148,7 +148,7 @@ export default function ProductDetail() {
               {related.map((p) => (
                 <Link key={p.id} to={`/product/${p.slug}`} className="group bg-card rounded-xl border overflow-hidden hover:shadow-lg transition-all">
                   <div className="aspect-square bg-muted p-4 flex items-center justify-center">
-                    <img src={p.image || "/placeholder.svg"} alt={p.name} className="w-full h-full object-contain" />
+                    <img src={p.image || "/lovable-uploads/e3b90aa7-e402-4865-8367-c09eb717ae7c.jpg"} alt={p.name} className="w-full h-full object-contain" />
                   </div>
                   <div className="p-3">
                     <h3 className="font-semibold text-sm line-clamp-2">{p.name}</h3>
