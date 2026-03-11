@@ -53,7 +53,7 @@ export default function FeaturedProducts() {
               >
                 <Link to={`/product/${product.slug}`}>
                   <div className="relative aspect-square bg-muted p-6 flex items-center justify-center">
-                    <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-contain" />
+                    <img src={product.image || "/lovable-uploads/fe7c32a8-79a9-44bc-902e-4215725d79a7.jpg"} alt={product.name} className="w-full h-full object-contain" />
                     {product.badge && (
                       <Badge className="absolute top-3 left-3 bg-secondary text-secondary-foreground">{product.badge}</Badge>
                     )}
