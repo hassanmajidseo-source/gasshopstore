@@ -52,7 +52,7 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">Contact Us</h4>
             <ul className="space-y-3 text-sm text-primary-foreground/70">
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-secondary" /> +92 300 1234567
+                <Phone className="h-4 w-4 text-secondary" /> +923030473682
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-secondary" /> info@gasshop.store
